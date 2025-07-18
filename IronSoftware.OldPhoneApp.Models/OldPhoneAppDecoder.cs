@@ -18,6 +18,11 @@ public class OldPhoneAppDecoder
         { "#", "" }
     };
 
+    /// <summary>
+    /// Iterates the list of given tokens (assumed valid) and decodes the text.
+    /// </summary>
+    /// <param name="tokens"></param>
+    /// <returns></returns>
     public static string Decode(List<string> tokens)
     {
         var letters = string.Empty;

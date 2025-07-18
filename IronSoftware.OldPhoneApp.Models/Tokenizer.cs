@@ -2,6 +2,14 @@
 
 public class Tokenizer
 {
+    /// <summary>
+    /// Creates a list of tokens that will be parsed by the decoder.
+    /// Some simple rules: 
+    /// - Assumes '#' to be the last char
+    /// - ' ' and a char != from the previous marks a new token
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public static List<string> Tokenize(string input)
     {
         var tokens = new List<string>();

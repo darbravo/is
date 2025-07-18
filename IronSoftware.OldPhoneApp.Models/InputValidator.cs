@@ -4,6 +4,16 @@ namespace IronSoftware.OldPhoneApp.Models;
 
 public class InputValidator
 {
+    /// <summary>
+    /// Validates several rules for input.
+    /// - Cant be null, empty or white space
+    /// - Must be only allowed characters
+    /// - Must end with #
+    /// - Must have only one #
+    /// - Cannot have a space following another
+    /// </summary>
+    /// <param name="input"></param>
+    /// <exception cref="ArgumentException"></exception>
     public static void Validate(string input)
     {
         ArgumentNullException.ThrowIfNullOrWhiteSpace(input);
