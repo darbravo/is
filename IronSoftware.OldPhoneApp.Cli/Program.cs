@@ -31,7 +31,7 @@ public class Program
 
             try
             {
-                DecodeInput(input);
+                Console.WriteLine(OldPhonePad(input));
             }
             catch (ArgumentException)
             {
@@ -41,9 +41,10 @@ public class Program
         }
     }
 
-    private static void DecodeInput(string input)
+    public static string OldPhonePad(string input)
     {
-        var oldPhoneText = OldPhoneAppDecoder.DecodeInput(input);
-        Console.WriteLine(oldPhoneText);
+        InputValidator.Validate(input);
+        var tokens = Tokenizer.Tokenize(input);
+        return OldPhoneAppDecoder.Decode(tokens);
     }
 }

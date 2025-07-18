@@ -1,5 +1,4 @@
-﻿
-namespace IronSoftware.OldPhoneApp.Models;
+﻿namespace IronSoftware.OldPhoneApp.Models;
 
 public class OldPhoneAppDecoder
 {
@@ -19,16 +18,7 @@ public class OldPhoneAppDecoder
         { "#", "" }
     };
 
-    public static string DecodeInput(string input)
-    {
-        ValidateInput(input);
-
-        var tokens = SplitTokens(input);
-
-        return TranslateTokens(tokens);
-    }
-
-    private static string TranslateTokens(List<string> tokens)
+    public static string Decode(List<string> tokens)
     {
         var letters = string.Empty;
 
@@ -60,65 +50,5 @@ public class OldPhoneAppDecoder
         }
 
         return letters;
-    }
-
-    private static void ValidateInput(string input)
-    {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(input);
-
-        var valid = true;
-
-        const string allowedInput = "0123456789#* ";
-
-        valid = valid && input.All(x => allowedInput.Contains(x));
-        valid = valid && input.EndsWith("#");
-        valid = valid && input.Count(x => x == '#') == 1;
-        valid = valid && !input.Contains("  ");
-
-        if (!valid)
-        {
-            throw new ArgumentException(nameof(input));
-        }
-    }
-
-    public static List<string> SplitTokens(string input)
-    {
-        var tokens = new List<string>();
-        var currentToken = string.Empty;
-
-        for (var i = 0; i < input.Length; i++)
-        {
-            var c = input[i];
-
-            if ((currentToken.Length == 4 || (currentToken.Length > 0 && currentToken[^1] != c) || c == ' ') && !string.IsNullOrWhiteSpace(currentToken))
-            {
-                tokens.Add(currentToken);
-                currentToken = string.Empty;
-            }
-
-            if (c == '#')
-            {
-                break;
-            }
-
-            if (c == ' ')
-            {
-                continue;
-            }
-
-            if (currentToken.Length == 0 && c != ' ')
-            {
-                currentToken += c;
-                continue;
-            }
-
-            if (currentToken[^1] == c && currentToken.Length < 4)
-            {
-                currentToken += c;
-                continue;
-            }
-        }
-
-        return tokens;
     }
 }
