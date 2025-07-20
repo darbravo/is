@@ -4,6 +4,12 @@
 
 ---
 
+## Challenge video
+
+- Watch me talk about me and the challenge here: https://www.youtube.com/watch?v=NSwL5iwbhjY
+
+---
+
 ## Details
 
 - CLI - User interacts with the OldPhonePad implementation through a command line console application
